@@ -22,7 +22,7 @@ df['len'] = df.word.str.len()
 df = df.query('len >= 2')
 df.sort_values('len') # len 으로 데이터 정렬하기(낮은 순)
 
-# 데이터 개수 받은 것으로 높은순 정렬하기
+# 4. 데이터 개수 받은 것으로 높은순 정렬하기
 df_count = df.word.value_counts(). \
             to_frame().reset_index(). \
             sort_values('word', ascending=False)
@@ -37,16 +37,15 @@ dic_word = df_count.set_index('index').to_dict()['word']
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 font = "DoHyeon-Regular.ttf"
-wc = WordCloud(font_path=font, width=400, height=400, background_color='white')
-
-wordc = wc.generate_from_frequencies(dic_word)
 
 # 직각 워드 클라우드
+# wc = WordCloud(font_path=font, width=400, height=400, background_color='white')
+# wordc = wc.generate_from_frequencies(dic_word)
 # plt.figure(figsize=(5, 5))
 # plt.axis('off')
 # plt.imshow(wordc)
 
-# 클라우드 그림화 - 구름모양이미지
+# 5. 클라우드 그림화 - 구름모양이미지
 import PIL
 image = PIL.Image.open('cloud.png')
 import numpy as np
